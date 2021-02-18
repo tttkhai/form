@@ -7,17 +7,15 @@ class App extends Component {
       todoList: [],
       task: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     let todoList = this.state.todoList;
     let id =
@@ -30,7 +28,7 @@ class App extends Component {
     todoList.push(a);
     this.setState({ ...this.state.todoList, todoList: todoList });
     event.target.reset();
-  }
+  };
   remove(id) {
     let todoList = this.state.todoList;
     todoList = todoList.filter((item) => item.id !== id);
@@ -57,7 +55,7 @@ class App extends Component {
                 style={{ listStyleType: "none", margin: "10px" }}
                 key={data.id}
               >
-                Task {index}: {data.value}
+                Task {index + 1}: {data.value}
                 <button onClick={() => this.remove(data.id)}>remove</button>
               </li>
             );
