@@ -8,14 +8,16 @@ function TaskList ({tasks, remove, saveEdit}) {
     const editItem=(id, value)=>{
         setEdit({id: id, value: value})
     }
+
     const changeEdit=(value)=>{
         saveEdit(value)
         setEdit({id: null, value: ''})
     }
-    
+
     if(edit.id) {
-        return <TaskForm changeEdit={changeEdit} edit={edit} />
+        return <TaskForm remove={remove} changeEdit={changeEdit} edit={edit} />
     }
+    
     return tasks.map(({id, value})=>{
         return (
             <div key={id}>{value}
